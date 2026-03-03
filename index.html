@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>워터 코리아</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="header">
   <div class="container nav">
-    <div class="logo">
+    <div class="logo" style="font-size: 25px;">
       워터 코리아
     </div>
     <!-- <nav class="menu">
@@ -27,22 +27,40 @@
   <div class="overlay">
     <div class="container hero-content" style="text-align: center;">
       <h1>비즈니스 생수 플랫폼<br><span>생수 배송 서비스</span></h1>
-      <p>냉온수기 무료 설치, 경기배송 전문</p>
+      <p>냉온수기 설치, 경기 지역 배송 전문</p>
 
       <div class="calculator">
         <h3>월요금 미리보기 간편계산기 ▶</h3>
         <div class="calc-row">
-          <select>
-            <option>지역 선택</option>
+          <select title="지역 선택" id="areas">
+            <option value="">= 지역 선택 =</option>
+            <option value="hwasung">화성</option>
+            <option value="osan">오산</option>
+            <option value="suwon">수원</option>
+            <option value="pyeongtaek">평택</option>
+            <option value="siheung">시흥</option>
+            <option value="yongin">용인</option>
+            <option value="ansan">안산</option>
+            <option value="ansung">안성</option>
           </select>
-          <select>
-            <option>냉온수기 대수</option>
+          <select title="냉온수기 대수 선택" id="numberOfDispensers">
+            <option value="">= 냉온수기 대수 선택 =</option>
+            <option value="1">1대</option>
+            <option value="2">2대</option>
+            <option value="3">3대</option>
+            <option value="4">4대</option>
+            <option value="5">5대</option>
+            <option value="6">6대</option>
+            <option value="7">7대</option>
+            <option value="8">8대</option>
+            <option value="9">9대</option>
+            <option value="10">10대</option>
           </select>
-          <select>
-            <option>약정 통수</option>
+          <select title="약정 통수" id="numberOfBottles">
+            <option>= 약정 통수 =</option>
           </select>
         </div>
-        <button>월 예상 요금 계산하기 ▶</button>
+        <button id="calc_btn">월 예상 요금 계산하기 ▶</button>
       </div>
     </div>
   </div>
@@ -52,27 +70,27 @@
   <div class="container feature-grid">
 
     <div class="feature">
-      <div class="icon">🤝</div>
-      <h4>냉온수기 두아레마</h4>
-      <p>설치비 전액 무료<br>빠른 A/S 가능</p>
+      <div class="icon"><img src="images/handshake.png" alt="악수 모양 아이콘" style="width:80%;"/></div>
+      <h4>냉온수기 무상대여</h4>
+      <p>부담없는 약정</p>
     </div>
 
     <div class="feature">
-      <div class="icon"> <img src="waterguard.png" alt="정기 소독 아이콘"/></div>
+      <div class="icon"><img src="images/delivery.png" alt="물통 모양 아이콘" style="width:80%;"/></div>
       <h4>자동 정기배송</h4>
-      <p>탑모델 냉온수기<br>자동 정기 배송</p>
+      <p>정기 배송 OR<br>긴급배송</p>
     </div>
 
     <div class="feature">
-      <div class="icon">🛡️</div>
+      <div class="icon"><img src="images/waterguard.png" alt="정기 소독 아이콘" style="width:80%;"/>️</div>
       <h4>정기 소독</h4>
-      <p>정수 재질관리<br>생수 기능 점검</p>
+      <p>정기적인 케어 및<br>요청 소독</p>
     </div>
 
     <div class="feature">
-      <div class="icon">📄</div>
-      <h4>간편 전자서 만들기</h4>
-      <p>서명절 간편 서류<br>간편 계약서 전달</p>
+      <div class="icon"><img src="images/house.png" alt="집 모양 아이콘" style="width:90%;"/></div>
+      <h4>다수 대리점 입점</h4>
+      <p>설치 지역 위주<br>인근 대리점 추천</p>
     </div>
 
   </div>
@@ -81,29 +99,62 @@
 <section class="consult">
   <div class="container consult-box">
     <h2>초고속 상담 신청</h2>
-    <p>지금 바로 설치 및 정기배송 상담을 신청하세요!</p>
+    <p>지금 바로 설치 및 정기 배송 상담을 신청하세요!</p>
 
     <div class="form">
-      <input type="text" placeholder="업체명">
-      <input type="text" placeholder="연락처">
-      <select>
+      <input type="text" id="nameOfPersonInCharge" placeholder="담당자명" title="담당자명 입력"/>
+      <input type="text" id="nameOfCompany" placeholder="업체명" title="업체명 입력"/>
+      <input type="tel" id="telNumber" placeholder="연락처" title="연락처 입력"/>
+      <!--<select>
         <option>설치 지역</option>
-      </select>
+      </select>-->
     </div>
 
-    <button class="consult-btn">초고속 상담신청 ▶</button>
+    <button class="consult-btn" id="consult_btn">초고속 상담신청 ▶</button>
   </div>
 </section>
 
-<footer class="footer">
+<!--<footer class="footer">
   <div class="container footer-inner">
     <div>💧 간본베이스</div>
     <div>상담시간 : 평일 8:30 ~ 18:00</div>
     <div>Copyright © 간본베이스</div>
   </div>
-</footer>
+</footer>-->
 
-<div class="chat-btn">실시간 상담</div>
+<div class="chat-btn"><a href="tel:010-4167-6207" style="text-decoration: none; color:white;">바로 전화 상담</a></div>
 
+<script src="js/jquery-4.0.0.min.js"></script>
+<script>
+  var pricePerDispenser = 6000;
+
+  $("#numberOfDispensers").change(function() {
+    var selected_area = $("#areas option:selected").val();
+    var numberOfDispensers = $(this).val();
+
+    if(selected_area !== ""){
+      var numberOfBottles = numberOfDispensers * 3;
+      $("#numberOfBottles").children().remove();
+      $("#numberOfBottles").html("<option value='"+numberOfBottles+"'>"+numberOfBottles+"통</option>");
+
+      $("#calc_btn").text("월 예상 요금: "+numberOfDispensers * pricePerDispenser + "원 상담 신청 ▶");
+    }else{
+      alert("지역을 먼저 선택해 주십시오.");
+      $("#areas").focus();
+    }
+  });
+
+  $("#calc_btn").click(function(){
+    var selected_area = $("#areas option:selected").val();
+    var numberOfDispensers = $("#numberOfDispensers option:selected").val();
+    var numberOfBottles = $("#numberOfBottles option:selected").val();
+
+    if(selected_area ==="" || numberOfBottles === "" || numberOfDispensers === ""){
+      alert("위의 모든 항목은 필수로 선택해 주십시오.");
+    }else{
+      location.href="#consult_btn";
+    }
+  });
+</script>
 </body>
 </html>

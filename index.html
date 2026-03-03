@@ -12,14 +12,14 @@
 <header class="header">
   <div class="container nav">
     <div class="logo" style="font-size: 25px;">
-      워터 코리아
+      <a href="/waterkorea" style="color:white;">워터 코리아</a>
     </div>
-    <!-- <nav class="menu">
-      <a href="#">회사소개</a>
-      <a href="#">서비스 안내</a>
+     <nav class="menu">
+      <a href="tel:010-4167-6207">상담전화: 010-4167-6207</a>
+      <!--<a href="#">서비스 안내</a>
       <a href="#">요금계산기</a>
-      <a href="#">조직 소개</a>
-    </nav> -->
+      <a href="#">조직 소개</a>-->
+    </nav>
   </div>
 </header>
 
@@ -30,7 +30,7 @@
       <p>냉온수기 설치, 경기 지역 배송 전문</p>
 
       <div class="calculator">
-        <h3>월요금 미리보기 간편계산기 ▶</h3>
+        <h3 style="color: #2a5298; font-size: 25px;">월요금 미리보기 간편계산기 ▶</h3>
         <div class="calc-row">
           <select title="지역 선택" id="areas">
             <option value="">= 지역 선택 =</option>
@@ -96,7 +96,7 @@
   </div>
 </section>
 
-<section class="consult">
+<section class="consult" style="background: linear-gradient(to right, #2b4677, #436297);">
   <div class="container consult-box">
     <h2>초고속 상담 신청</h2>
     <p>지금 바로 설치 및 정기 배송 상담을 신청하세요!</p>
@@ -122,7 +122,7 @@
   </div>
 </footer>-->
 
-<div class="chat-btn"><a href="tel:010-4167-6207" style="text-decoration: none; color:white;">바로 전화 상담</a></div>
+<div class="chat-btn"><a href="tel:010-4167-6207" style="color:white;">바로 전화 상담</a></div>
 
 <script src="js/jquery-4.0.0.min.js"></script>
 <script>
@@ -157,6 +157,13 @@
   });
 
   $("#consult_btn").click(function(){
+    var selected_area = $("#areas option:selected").val();
+    var numberOfDispensers = $("#numberOfDispensers option:selected").val();
+    var numberOfBottles = $("#numberOfBottles option:selected").val();
+    var nameOfPersonInCharge = $("#nameOfPersonInCharge").val();
+    var nameOfCompany = $("#nameOfCompany").val();
+    var telNumber = $("#telNumber").val();
+
 
   });
 </script>

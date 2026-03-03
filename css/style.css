@@ -10,6 +10,10 @@ body {
   color: #222;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   width: 1200px;
   margin: auto;
@@ -111,7 +115,7 @@ body {
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  /*gap: 40px;*/
   text-align: center;
 }
 
@@ -192,7 +196,7 @@ body {
 
 @media (max-width: 900px) {
   .feature-grid {
-    grid-template-columns: repeat(2, 1fr);
+    /*grid-template-columns: repeat(2, 1fr);*/
   }
 
   .calc-row,
@@ -213,7 +217,7 @@ body {
   }
 
   .feature-grid {
-    grid-template-columns: 1fr;
+    /*grid-template-columns: 1fr;*/
   }
 
   .consult-box {

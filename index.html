@@ -103,9 +103,9 @@
   </div>
   <div class="container consult-box">
     <div class="form">
-      <input type="text" id="nameOfPersonInCharge" placeholder="담당자명" title="담당자명 입력"/>
-      <input type="text" id="nameOfCompany" placeholder="업체명" title="업체명 입력"/>
-      <input type="tel" id="telNumber" placeholder="연락처" title="연락처 입력"/>
+      <input type="text" id="nameOfPersonInCharge" placeholder="담당자명" title="담당자명 입력" maxlength="50"/>
+      <input type="text" id="nameOfCompany" placeholder="업체명" title="업체명 입력" maxlength="200"/>
+      <input type="tel" id="telNumber" placeholder="연락처" title="연락처 입력" maxlength="30"/>
       <!--<select>
         <option>설치 지역</option>
       </select>-->
@@ -123,7 +123,7 @@
   </div>
 </footer>-->
 
-<div class="chat-btn"><a href="tel:010-4167-6207" style="color:white;">바로 전화 상담</a></div>
+<div class="chat-btn" style="opacity: 0.9"><a href="tel:010-4167-6207" style="color:white;">바로 전화 상담</a></div>
 
 <script src="js/jquery-4.0.0.min.js"></script>
 <script>
@@ -165,8 +165,28 @@
     var nameOfCompany = $("#nameOfCompany").val();
     var telNumber = $("#telNumber").val();
 
-    if(confirm("위의 입력하신 정보로 상담 신청을 하시겠습니까?")){
-      alert("고객님이 입력하신 소중한 정보를 담당자에게 전달 하였습니다. 감사합니다.");
+    if(selected_area === ""){
+      alert("지역을 선택해 주십시오");
+      $("#areas").focus();
+    }else if(numberOfBottles === ""){
+      alert("약정 통수를 선택해 주십시오");
+      $("#numberOfBottles").focus();
+    }else if(numberOfDispensers === "") {
+      alert("냉온수기 대수를 선택해 주십시오");
+      $("#numberOfDispensers").focus();
+    }else if(nameOfPersonInCharge === ""){
+      alert("담당자명을 입력해 주십시오");
+      $("#nameOfPersonInCharge").focus();
+    }else if(nameOfCompany === ""){
+      alert("회사명을 입력해 주십시오");
+      $("#nameOfCompany").focus();
+    }else if(telNumber === ""){
+      alert("연락처를 입력해 주십시오");
+      $("#telNumber").focus();
+    }else {
+      if (confirm("위의 입력하신 정보로 상담 신청을 하시겠습니까?")) {
+        alert("고객님이 입력하신 소중한 정보를 담당자에게 전달 하였습니다. 감사합니다.");
+      }
     }
   });
 </script>

@@ -150,10 +150,14 @@
     var numberOfBottles = $("#numberOfBottles option:selected").val();
 
     if(selected_area ==="" || numberOfBottles === "" || numberOfDispensers === ""){
-      alert("위의 모든 항목은 필수로 선택해 주십시오.");
+      alert("모든 항목은 필수로 선택해 주십시오.");
     }else{
       location.href="#consult_btn";
     }
+  });
+
+  $("#consult_btn").click(function(){
+
   });
 </script>
 </body>

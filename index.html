@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
 <title>워터 코리아</title>
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/toastr.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -127,7 +126,6 @@
 <div class="chat-btn" style="opacity: 0.9"><a href="tel:010-4167-6207" style="color:white;">바로 전화 상담</a></div>
 
 <script src="js/jquery-4.0.0.min.js"></script>
-<script src="js/toastr.min.js"></script>
 <script src="js/sweetalert2@11.min.js"></script>
 
 <script>
@@ -272,7 +270,7 @@
     const Toast = Swal.mixin({
       toast: true,
       showConfirmButton: false,
-      timer: 3000,
+      timer: 5000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.onmouseenter = Swal.stopTimer;
@@ -283,13 +281,6 @@
       icon: type,
       title: text
     });
-  }
-
-  function formattedMoney(price){
-    return new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW'
-    }).format(price);
   }
 </script>
 </body>

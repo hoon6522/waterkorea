@@ -168,6 +168,7 @@
 
   $("#consult_btn").click(function(){
     var selected_area = $("#areas option:selected").val();
+    var selected_area_nm = $("#areas option:selected").text();
     var numberOfDispensers = $("#numberOfDispensers option:selected").val();
     var numberOfBottles = $("#numberOfBottles option:selected").val();
     var nameOfPersonInCharge = $("#nameOfPersonInCharge").val();
@@ -195,7 +196,7 @@
     }else {
       if (confirm("위의 입력하신 정보로 상담 신청을 하시겠습니까?")) {
         var text="== 신규 상담 신청 접수 ==";
-        text+="\n지역: " + selected_area;
+        text+="\n지역: " + selected_area_nm;
         text+="\n냉온수기 대수: " + numberOfDispensers + "대";
         text+="\n약정 통수: " + numberOfBottles + "통";
         text+="\n담당자명: " + nameOfPersonInCharge;

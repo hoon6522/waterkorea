@@ -183,8 +183,8 @@ a {
 /* Floating Chat */
 .chat-btn {
   position: fixed;
-  right: 20px;
-  bottom: 40px;
+  right: 10px;
+  bottom: 10px;
   background: #2a5298;
   color: white;
   padding: 15px 20px;

@@ -128,6 +128,7 @@
 
 <script src="js/jquery-4.0.0.min.js"></script>
 <script src="js/toastr.min.js"></script>
+<script src="js/sweetalert2@11.min.js"></script>
 
 <script>
   var pricePerDispenser = 6000;
@@ -138,7 +139,7 @@
 
     if(selected_area !== ""){
       if(numberOfDispensers === "") {
-        toastr.error("냉온수기 대수를 선택해 주십시오.");
+        openToast("냉온수기 대수를 선택해 주십시오.", "error");
         $("#numberOfDispensers").focus();
       }else{
         var numberOfBottles = numberOfDispensers * 3;
@@ -149,7 +150,7 @@
       }
     }else{
       // Display an info toast with no title
-      toastr.error('지역을 선택해 주십시오.')
+      openToast('지역을 선택해 주십시오.', "error")
       $("#areas").focus();
     }
   });
@@ -160,7 +161,7 @@
     var numberOfBottles = $("#numberOfBottles option:selected").val();
 
     if(selected_area ==="" || numberOfBottles === "" || numberOfDispensers === ""){
-      toastr.error("모든 항목은 필수로 선택해 주십시오.");
+      openToast("모든 항목은 필수로 선택해 주십시오.", "error");
     }else{
       location.href="#consult_btn";
     }
@@ -176,22 +177,22 @@
     var telNumber = $("#telNumber").val();
 
     if(selected_area === ""){
-      toastr.error("지역을 선택해 주십시오");
+      openToast("지역을 선택해 주십시오", "error");
       $("#areas").focus();
     }else if(numberOfBottles === ""){
-      toastr.error("약정 통수를 선택해 주십시오");
+      openToast("약정 통수를 선택해 주십시오", "error");
       $("#numberOfBottles").focus();
     }else if(numberOfDispensers === "") {
-      toastr.error("냉온수기 대수를 선택해 주십시오");
+      openToast("냉온수기 대수를 선택해 주십시오", "error");
       $("#numberOfDispensers").focus();
     }else if(nameOfPersonInCharge === ""){
-      toastr.error("담당자명을 입력해 주십시오");
+      openToast("담당자명을 입력해 주십시오", "error");
       $("#nameOfPersonInCharge").focus();
     }else if(nameOfCompany === ""){
-      toastr.error("회사명을 입력해 주십시오");
+      openToast("회사명을 입력해 주십시오", "error");
       $("#nameOfCompany").focus();
     }else if(telNumber === ""){
-      toastr.error("연락처를 입력해 주십시오");
+      openToast("연락처를 입력해 주십시오", "error");
       $("#telNumber").focus();
     }else {
       if (confirm("위의 입력하신 정보로 상담 신청을 하시겠습니까?")) {
@@ -210,7 +211,7 @@
 
   $("#telNumber").change(function() {
     if(isNaN(this.value)){
-      toastr.error("연락처는 숫자만 입력 가능 합니다.");
+      openToast("연락처는 숫자만 입력 가능 합니다.", "error");
       $("#telNumber").val("").focus();
     }else{
       this.value = phoneNumberFomatter(this.value);
@@ -230,10 +231,10 @@
         contentType : 'application/json',
         data : JSON.stringify(payload),
         success : function(res) {
-          toastr.success("고객님이 입력하신 소중한 정보를 담당자에게 전달 하였습니다. 빠른 시일내에 입력해주신 연락처로 연락 드리겠습니다. 감사합니다.");
+          openToast("고객님이 입력하신 소중한 정보를 담당자에게 전달 하였습니다. 빠른 시일내에 입력해주신 연락처로 연락 드리겠습니다. 감사합니다.", "success");
         },
         error : function(xhr) {
-          toastr.error(xhr.responseText);
+          openToast(xhr.responseText, "error");
         }
       });
   }
@@ -266,7 +267,24 @@
       }
     }
     return formatNum;
+  }
 
+  function openToast(text, type){
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: type,
+      title: text
+    });
   }
 </script>
 </body>

@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>워터 코리아</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/toastr.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -60,7 +61,7 @@
             <option>약정 통수</option>
           </select>
         </div>
-        <button id="calc_btn">월 예상 요금 계산하기 ▶</button>
+        <button id="calc_btn" style="font-size: 18px;">월 예상 요금 계산하기 ▶</button>
       </div>
     </div>
   </div>
@@ -126,22 +127,30 @@
 <div class="chat-btn" style="opacity: 0.9"><a href="tel:010-4167-6207" style="color:white;">바로 전화 상담</a></div>
 
 <script src="js/jquery-4.0.0.min.js"></script>
+<script src="js/toastr.min.js"></script>
+
 <script>
   var pricePerDispenser = 6000;
 
-  $("#numberOfDispensers").change(function() {
+  $("#numberOfDispensers, #areas").change(function() {
     var selected_area = $("#areas option:selected").val();
-    var numberOfDispensers = $(this).val();
+    var numberOfDispensers = $("#numberOfDispensers option:selected").val();
 
     if(selected_area !== ""){
-      var numberOfBottles = numberOfDispensers * 3;
-      $("#numberOfBottles").children().remove();
-      $("#numberOfBottles").html("<option value='"+numberOfBottles+"'>"+numberOfBottles+"통</option>");
+      if(numberOfDispensers === "") {
+        toastr.error("냉온수기 대수를 선택해 주십시오.");
+        $("#numberOfDispensers").focus();
+      }else{
+        var numberOfBottles = numberOfDispensers * 3;
+        $("#numberOfBottles").children().remove();
+        $("#numberOfBottles").html("<option value='"+numberOfBottles+"'>"+numberOfBottles+"통</option>");
 
-      $("#calc_btn").text("월 예상 요금: "+numberOfDispensers * pricePerDispenser + "원 상담 신청 ▶");
+        $("#calc_btn").text("월 예상 요금: "+numberOfDispensers * pricePerDispenser + "원 상담 신청 ▶");
+      }
     }else{
-      alert("지역을 먼저 선택해 주십시오.");
-      $("#areas").focus();
+      // Display an info toast with no title
+      toastr.error('지역을 선택해 주십시오.')
+      $("#areas").focus().click();
     }
   });
 
@@ -151,7 +160,7 @@
     var numberOfBottles = $("#numberOfBottles option:selected").val();
 
     if(selected_area ==="" || numberOfBottles === "" || numberOfDispensers === ""){
-      alert("모든 항목은 필수로 선택해 주십시오.");
+      toastr.error("모든 항목은 필수로 선택해 주십시오.");
     }else{
       location.href="#consult_btn";
     }
@@ -166,48 +175,97 @@
     var telNumber = $("#telNumber").val();
 
     if(selected_area === ""){
-      alert("지역을 선택해 주십시오");
+      toastr.error("지역을 선택해 주십시오");
       $("#areas").focus();
     }else if(numberOfBottles === ""){
-      alert("약정 통수를 선택해 주십시오");
+      toastr.error("약정 통수를 선택해 주십시오");
       $("#numberOfBottles").focus();
     }else if(numberOfDispensers === "") {
-      alert("냉온수기 대수를 선택해 주십시오");
+      toastr.error("냉온수기 대수를 선택해 주십시오");
       $("#numberOfDispensers").focus();
     }else if(nameOfPersonInCharge === ""){
-      alert("담당자명을 입력해 주십시오");
+      toastr.error("담당자명을 입력해 주십시오");
       $("#nameOfPersonInCharge").focus();
     }else if(nameOfCompany === ""){
-      alert("회사명을 입력해 주십시오");
+      toastr.error("회사명을 입력해 주십시오");
       $("#nameOfCompany").focus();
     }else if(telNumber === ""){
-      alert("연락처를 입력해 주십시오");
+      toastr.error("연락처를 입력해 주십시오");
       $("#telNumber").focus();
     }else {
       if (confirm("위의 입력하신 정보로 상담 신청을 하시겠습니까?")) {
-        var text="지역: " + selected_area + ", \n";
-        text+="\n냉온수기 대수: " + numberOfDispensers + "대, \n";
-        text+="\n약정 통수: " + numberOfBottles + "통, \n";
-        text+="\n담당자명: " + nameOfPersonInCharge + ", \n";
-        text+="\n회사명: " + nameOfCompany + ", \n";
-        text+="\n연락처: " + telNumber + ", ";
+        var text="== 신규 상담 신청 접수 ==";
+        text+="\n지역: " + selected_area;
+        text+="\n냉온수기 대수: " + numberOfDispensers + "대";
+        text+="\n약정 통수: " + numberOfBottles + "통";
+        text+="\n담당자명: " + nameOfPersonInCharge;
+        text+="\n회사명: " + nameOfCompany;
+        text+="\n연락처: " + telNumber;
 
         storeClient(text);
       }
     }
   });
 
+  $("#telNumber").change(function() {
+    if(isNaN(this.value)){
+      toastr.error("연락처는 숫자만 입력 가능 합니다.");
+      $("#telNumber").val("").focus();
+    }else{
+      this.value = phoneNumberFomatter(this.value);
+    }
+  });
+
   function storeClient(text){
+    var payload = {
+      chat_id: "@CryptomatoAlert",
+      text: text
+    }
+
     $.ajax ({
         type : "POST",
-        url : "https://api.telegram.org/bot6411750970:AAF7Oj5kA3_Xdq61hAoxfCdcVOEE9aejgbQ/sendMessage?chat_id=@CryptomatoAlert&text=" + text,
+        url : "https://api.telegram.org/bot6411750970:AAF7Oj5kA3_Xdq61hAoxfCdcVOEE9aejgbQ/sendMessage",
+        dataType : 'json',
+        contentType : 'application/json',
+        data : JSON.stringify(payload),
         success : function(res) {
-          alert("고객님이 입력하신 소중한 정보를 담당자에게 전달 하였습니다. 빠른 시일내에 입력해주신 연락처로 연락 드리겠습니다. 감사합니다.");
+          toastr.error("고객님이 입력하신 소중한 정보를 담당자에게 전달 하였습니다. 빠른 시일내에 입력해주신 연락처로 연락 드리겠습니다. 감사합니다.");
         },
         error : function(xhr) {
-          alert(xhr.responseText);
+          toastr.error(xhr.responseText);
         }
       });
+  }
+
+  function phoneNumberFomatter(num,type){
+
+    var formatNum = '';
+
+    if(num.length===11){
+      if(type===0){
+        formatNum = num.replace(/(\d{3})(\d{4})(\d{4})/, '$1-****-$3');
+      }else{
+        formatNum = num.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3');
+      }
+    }else if(num.length===8){
+      formatNum = num.replace(/(\d{4})(\d{4})/, '$1-$2');
+    }else{
+      if(num.indexOf('02')===0){
+        if(type===0){
+          formatNum = num.replace(/(\d{2})(\d{4})(\d{4})/, '$1-****-$3');
+        }else{
+          formatNum = num.replace(/(\d{2})(\d{4})(\d{4})/, '$1-$2-$3');
+        }
+      }else{
+        if(type===0){
+          formatNum = num.replace(/(\d{3})(\d{3})(\d{4})/, '$1-***-$3');
+        }else{
+          formatNum = num.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+        }
+      }
+    }
+    return formatNum;
+
   }
 </script>
 </body>

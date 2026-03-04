@@ -230,7 +230,7 @@
         contentType : 'application/json',
         data : JSON.stringify(payload),
         success : function(res) {
-          toastr.error("고객님이 입력하신 소중한 정보를 담당자에게 전달 하였습니다. 빠른 시일내에 입력해주신 연락처로 연락 드리겠습니다. 감사합니다.");
+          toastr.success("고객님이 입력하신 소중한 정보를 담당자에게 전달 하였습니다. 빠른 시일내에 입력해주신 연락처로 연락 드리겠습니다. 감사합니다.");
         },
         error : function(xhr) {
           toastr.error(xhr.responseText);

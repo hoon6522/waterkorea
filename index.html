@@ -32,7 +32,7 @@
       <div class="calculator">
         <h3 style="color: #2a5298; font-size: 25px;">월요금 미리보기 간편계산기 ▶</h3>
         <div class="calc-row" style="flex-direction:row;">
-          <select title="지역 선택" id="areas">
+          <select title="지역 선택" id="areas" style="font-weight: bold; font-size: 14px;">
             <option value="">지역</option>
             <option value="hwasung">화성</option>
             <option value="osan">오산</option>
@@ -43,20 +43,20 @@
             <option value="ansan">안산</option>
             <option value="ansung">안성</option>
           </select>
-          <select title="냉온수기 대수 선택" id="numberOfDispensers">
+          <select title="냉온수기 대수 선택" id="numberOfDispensers" style="font-weight: bold; font-size: 14px;">
             <option value="">냉온수기 대수</option>
-            <option value="1">1대</option>
-            <option value="2">2대</option>
-            <option value="3">3대</option>
-            <option value="4">4대</option>
-            <option value="5">5대</option>
-            <option value="6">6대</option>
-            <option value="7">7대</option>
-            <option value="8">8대</option>
-            <option value="9">9대</option>
-            <option value="10">10대</option>
+            <option value="1">1대 (무상 임대) </option>
+            <option value="2">2대 (무상 임대)</option>
+            <option value="3">3대 (무상 임대)</option>
+            <option value="4">4대 (무상 임대)</option>
+            <option value="5">5대 (무상 임대)</option>
+            <option value="6">6대 (무상 임대)</option>
+            <option value="7">7대 (무상 임대)</option>
+            <option value="8">8대 (무상 임대)</option>
+            <option value="9">9대 (무상 임대)</option>
+            <option value="10">10대 (무상 임대)</option>
           </select>
-          <select title="약정 통수" id="numberOfBottles">
+          <select title="약정 통수" id="numberOfBottles" style="font-weight: bold; font-size: 14px;">
             <option>약정 통수</option>
           </select>
         </div>
@@ -123,13 +123,13 @@
   </div>
 </footer>-->
 
-<div class="chat-btn" style="opacity: 0.9"><a href="tel:010-4167-6207" style="color:white;">바로 전화 상담</a></div>
+<div class="chat-btn"><a href="tel:010-4167-6207" style="color:white;">바로 전화 상담</a></div>
 
 <script src="js/jquery-4.0.0.min.js"></script>
 <script src="js/sweetalert2@11.min.js"></script>
 
 <script>
-  var pricePerDispenser = 6000;
+  var pricePerBottle = 6000;
 
   $("#numberOfDispensers, #areas").change(function() {
     var selected_area = $("#areas option:selected").val();
@@ -142,9 +142,9 @@
       }else{
         var numberOfBottles = numberOfDispensers * 3;
         $("#numberOfBottles").children().remove();
-        $("#numberOfBottles").html("<option value='"+numberOfBottles+"'>"+numberOfBottles+"통</option>");
+        $("#numberOfBottles").html("<option value='"+numberOfBottles+"'>약정통수 "+numberOfBottles+"통</option>");
 
-        $("#calc_btn").text("월 예상 요금: "+ (numberOfDispensers * pricePerDispenser).toLocaleString() + "원 상담 신청 ▶");
+        $("#calc_btn").text("월 예상 요금: "+ (numberOfBottles * pricePerBottle).toLocaleString() + "원 상담 신청 ▶");
       }
     }/*else{
       openToast('지역을 선택해 주십시오.', "error")

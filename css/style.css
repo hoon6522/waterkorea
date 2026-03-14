@@ -24,6 +24,10 @@ a {
   background: linear-gradient(to right, #1e3c72, #2a5298);
   padding: 18px 0;
   color: white;
+  position:fixed;
+  width:100%;
+  top: 0;
+  z-index:10;
 }
 
 .nav {
@@ -185,11 +189,12 @@ a {
   position: fixed;
   right: 10px;
   bottom: 10px;
-  background: #2a5298;
+  background: black;
   color: white;
   padding: 15px 20px;
   border-radius: 30px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 /* =====================

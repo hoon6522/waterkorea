@@ -46,7 +46,7 @@ a {
 /* Hero */
 .hero {
   /*background: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e') center/cover;*/
-  background: url('/waterkorea/images/office.png') left/cover;
+  background: url('/images/office.png') left/cover;
   height: 650px;
   position: relative;
 }

@@ -57,7 +57,7 @@
             <option value="10">10대 (무상 임대)</option>
           </select>
           <select title="약정 통수" id="numberOfBottles" style="font-weight: bold;">
-            <option>약정 통수</option>
+            <option value="">약정 통수</option>
           </select>
         </div>
         <button id="calc_btn" style="font-size: 18px;">월 예상 요금 계산하기 ▶</button>
@@ -167,13 +167,13 @@
   $("#consult_btn").click(function(){
     var selected_area = $("#areas option:selected").val();
     var selected_area_nm = $("#areas option:selected").text();
-    var numberOfDispensers = $("#numberOfDispensers option:selected").val();
-    var numberOfBottles = $("#numberOfBottles option:selected").val();
+    var numberOfDispensers = $("#numberOfDispensers option:selected").val() + "대";
+    var numberOfBottles = $("#numberOfBottles option:selected").val() + "통";
     var nameOfPersonInCharge = $("#nameOfPersonInCharge").val();
     var nameOfCompany = $("#nameOfCompany").val();
     var telNumber = $("#telNumber").val();
 
-    if(selected_area === ""){
+    /*if(selected_area === ""){
       openToast("지역을 선택해 주십시오", "error");
       $("#areas").focus();
     }else if(numberOfBottles === ""){
@@ -182,7 +182,7 @@
     }else if(numberOfDispensers === "") {
       openToast("냉온수기 대수를 선택해 주십시오", "error");
       $("#numberOfDispensers").focus();
-    }else if(nameOfPersonInCharge === ""){
+    }else */if(nameOfPersonInCharge === ""){
       openToast("담당자명을 입력해 주십시오", "error");
       $("#nameOfPersonInCharge").focus();
     }else if(nameOfCompany === ""){
@@ -197,9 +197,22 @@
     }*/else {
       if (confirm("위의 입력하신 정보로 상담 신청을 하시겠습니까?")) {
         var text="== 신규 상담 신청 접수 ==";
+
+        if(selected_area === ""){
+          selected_area_nm = "미입력";
+        }
+
+        if(numberOfDispensers === "대"){
+          numberOfDispensers = "미입력";
+        }
+
+        if(numberOfBottles === "통"){
+          numberOfBottles = "미입력";
+        }
+
         text+="\n지역: " + selected_area_nm;
-        text+="\n냉온수기 대수: " + numberOfDispensers + "대";
-        text+="\n약정 통수: " + numberOfBottles + "통";
+        text+="\n냉온수기 대수: " + numberOfDispensers;
+        text+="\n약정 통수: " + numberOfBottles;
         text+="\n담당자명: " + nameOfPersonInCharge;
         text+="\n회사명: " + nameOfCompany;
         text+="\n연락처: " + telNumber;

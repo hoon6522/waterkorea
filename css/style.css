@@ -48,7 +48,7 @@ a {
 .hero {
   /*background: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e') center/cover;*/
   background: url('/images/office.png') left/cover;
-  height: 500px;
+  height: 550px;
   position: relative;
 }
 
@@ -253,4 +253,14 @@ a {
     /*display: none;*/
   }
 
+}
+
+@media (min-width: 601px) {
+  .hero-content:first-child {
+    margin-top: 100px;
+  }
+
+  .calculator {
+    margin-top: 70px;
+  }
 }

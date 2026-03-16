@@ -48,7 +48,7 @@ a {
 .hero {
   /*background: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e') center/cover;*/
   background: url('/images/office.png') left/cover;
-  height: 650px;
+  height: 500px;
   position: relative;
 }
 
@@ -57,7 +57,7 @@ a {
   height: 100%;
   display: flex;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 72px;
 }
 
 .hero-content {
@@ -230,11 +230,11 @@ a {
 
   .hero {
     height: auto;
-    padding: 72px 0 220px 0;
+    padding: 70px 0 240px 0;
   }
 
   .features {
-    padding: 80px 0 30px 0
+    padding: 60px 0 30px 0
   }
 
   .hero h1 {

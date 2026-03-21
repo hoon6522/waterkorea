@@ -288,3 +288,9 @@ a {
     font-size: 18px;
   }
 }
+
+@media (min-width: 1201px) {
+  .form input {
+    width:33.3%;
+  }
+}

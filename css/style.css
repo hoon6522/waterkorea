@@ -117,6 +117,7 @@ a {
   color: white;
   font-weight: 600;
   cursor: pointer;
+  font-size: 18px;
 }
 
 /* Features */
@@ -256,6 +257,10 @@ a {
 
   .hero h1 {
     font-size: 32px;
+  }
+
+  .calculator button {
+    font-size: 16px;
   }
 
   .feature-grid {

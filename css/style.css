@@ -132,9 +132,11 @@ a {
 
 .feature h4 {
   color: #1e3c72;
+  font-size: clamp(15px, 1.2vw, 21px);
 }
 
 .feature p {
+  font-size: clamp(13px, 1.2vw, 17px);
   font-weight: bold;
 }
 
@@ -227,14 +229,6 @@ a {
   .calculator {
     width: 90%;
   }
-
-  .feature h4 {
-    font-size: 15px;
-  }
-
-  .feature p {
-    font-size: 13px;
-  }
 }
 
 @media (max-width: 900px) {
@@ -292,15 +286,5 @@ a {
 
   .calculator select {
     font-size: 18px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .feature h4 {
-    font-size: 21px;
-  }
-
-  .feature p {
-    font-size: 17px;
   }
 }

@@ -63,7 +63,7 @@
             <option value="">약정 통수</option>
           </select>
         </div>
-        <button id="calc_btn" style="font-size: 18px;">월 예상 요금 계산하기 ▶</button>
+        <button id="calc_btn" style="font-size: 18px;">월 예상 요금 미리보기 ▶</button>
       </div>
     </div>
   </div>
@@ -74,26 +74,34 @@
 
     <div class="feature">
       <div class="icon"><img src="images/handshake.png" alt="악수 모양 아이콘" style="width:92%;"/></div>
-      <h4>냉온수기 무상대여</h4>
-      <p>부담없는 약정</p>
+      <h4>냉온수기</h4>
+      <h4>무상대여</h4>
+      <p style="margin-top: 10px;">부담없는</p>
+      <p>약정</p>
     </div>
 
     <div class="feature">
       <div class="icon"><img src="images/delivery.png" alt="물통 모양 아이콘" style="width:84%;"/></div>
-      <h4>자동 정기배송</h4>
-      <p>정기 배송 OR<br>긴급배송</p>
+      <h4>자동</h4>
+      <h4>정기배송</h4>
+      <p style="margin-top: 10px;">정기 배송</p>
+      <p>긴급 배송</p>
     </div>
 
     <div class="feature">
       <div class="icon"><img src="images/waterguard.png" alt="정기 소독 아이콘" style="width:87%;"/>️</div>
-      <h4>정기 소독</h4>
-      <p>정기적인 케어 및<br>요청 소독</p>
+      <h4>정기/요청</h4>
+      <h4>소독</h4>
+      <p style="margin-top: 10px;">전문 소독</p>
+      <p>A/S 진행</p>
     </div>
 
     <div class="feature">
       <div class="icon"><img src="images/house.png" alt="집 모양 아이콘" style="width:100%;"/></div>
-      <h4>다수 대리점 입점</h4>
-      <p>설치 지역<br>인근 대리점 추천</p>
+      <h4>지역</h4>
+      <h4>대리점 입점</h4>
+      <p style="margin-top: 10px;">설치 지역</p>
+      <p>인근 대리점</p>
     </div>
 
   </div>
@@ -145,7 +153,7 @@
       }else{
         var numberOfBottles = numberOfDispensers * 3;
         $("#numberOfBottles").children().remove();
-        $("#numberOfBottles").html("<option value=''>약정 통수</option><option value='"+numberOfBottles+"'>"+numberOfBottles+"통</option>");
+        $("#numberOfBottles").html("<option value=''>약정 통수</option><option value='"+numberOfBottles+"'>약정 "+numberOfBottles+"통</option>");
         $("#numberOfBottles").val(numberOfBottles).change();
         $("#calc_btn").text("월 예상 요금: "+ (numberOfBottles * pricePerBottle).toLocaleString() + "원 상담 신청 ▶");
       }

@@ -17,7 +17,7 @@ a {
 .container {
 
   margin: auto;
-  width: 80%;
+  width: 60%;
 }
 
 /* Header */
@@ -86,7 +86,7 @@ a {
   border-radius: 15px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
   color: #222;
-  width: 80%;
+  width: 60%;
   position: absolute;
 }
 
@@ -102,7 +102,7 @@ a {
 
 .calculator select {
   /*flex: 1;*/
-  padding: 8px 0 8px 8px;
+  padding: 8px 8px 8px 8px;
   border-radius: 8px;
   border: 1px solid #ddd;
 }
@@ -128,7 +128,11 @@ a {
   color: #1e3c72;
 }
 
-.features p {
+.feature p {
+  font-weight: bold;
+}
+
+.features p:first-child {
   margin-top: 10px;
 }
 
@@ -217,6 +221,14 @@ a {
   .calculator {
     width: 90%;
   }
+
+  .feature h4 {
+    font-size: 15px;
+  }
+
+  .feature p {
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -260,11 +272,23 @@ a {
 }
 
 @media (min-width: 601px) {
-  .hero-content:first-child {
+  .overlay .hero-content:first-child {
     margin-top: 100px;
   }
 
   .calculator {
     margin-top: 70px;
+  }
+
+
+}
+
+@media (min-width: 1200px) {
+  .feature h4 {
+    font-size: 24px;
+  }
+
+  .feature p {
+    font-size: 19px;
   }
 }

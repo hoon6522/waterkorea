@@ -105,8 +105,11 @@ a {
   padding: 8px 8px 8px 8px;
   border-radius: 8px;
   border: 1px solid #ddd;
-  text-align: center;
   font-weight: bold;
+  text-align-last: center;
+  text-align: center;
+  -ms-text-align-last: center;
+  -moz-text-align-last: center;
 }
 
 .calculator button {

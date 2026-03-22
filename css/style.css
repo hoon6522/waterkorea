@@ -124,6 +124,23 @@ a {
   font-size: 18px;
 }
 
+.calc-result {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5em 1em;
+  margin: 0 auto;
+  text-align: right;
+  font-size: clamp(17px, 1.4vw, 21px);
+}
+
+.calc-value{
+  text-align: left;
+}
+
+.calc-result span:after{
+  content: ':'
+}
+
 /* Features */
 .features {
   background: white;

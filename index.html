@@ -148,74 +148,70 @@
   gtag('config', 'G-ZHCRMFQ330');
 </script>
 <script>
-  var pricePerBottle = 6000;
+  let pricePerBottle = 6000;
 
   $("#numberOfDispensers, #areas").change(function() {
-    var selected_area = $("#areas option:selected").val();
-    var numberOfDispensers = $("#numberOfDispensers option:selected").val();
+    let selected_area = $("#areas option:selected").val();
+    let numberOfDispensers = $("#numberOfDispensers option:selected").val();
 
     if(selected_area !== ""){
       if(numberOfDispensers === "") {
-        //openToast("냉온수기 대수를 선택해 주십시오.", "error");
         $("#numberOfDispensers").focus();
       }else{
-        var numberOfBottles = numberOfDispensers * 3;
-        $("#numberOfBottles").children().remove();
-        $("#numberOfBottles").html("<option value=''>약정 통수</option><option value='"+numberOfBottles+"'>약정 "+numberOfBottles+"통</option>");
-        $("#numberOfBottles").val(numberOfBottles).change();
+        let numberOfBottlesElem = $("#numberOfBottles");
+        let numberOfBottles = numberOfDispensers * 3;
+
+        numberOfBottlesElem.children().remove();
+        numberOfBottlesElem.html("<option value=''>약정 통수</option><option value='"+numberOfBottles+"'>약정 "+numberOfBottles+"통</option>");
+        numberOfBottlesElem.val(numberOfBottles).change();
         $("#calc_btn").text("월 예상 요금: "+ (numberOfBottles * pricePerBottle).toLocaleString() + "원 상담 신청 ▶");
       }
-    }/*else{
-      openToast('지역을 선택해 주십시오.', "error")
-      $("#areas").focus();
-    }*/
+    }
   });
 
   $("#calc_btn").click(function(){
-    var selected_area = $("#areas option:selected").val();
-    var numberOfDispensers = $("#numberOfDispensers option:selected").val();
-    var numberOfBottles = $("#numberOfBottles option:selected").val();
+    let selected_area = $("#areas option:selected").val();
+    let numberOfDispensers = $("#numberOfDispensers option:selected").val();
+    let numberOfBottles = $("#numberOfBottles option:selected").val();
 
-    if(selected_area ==="" || numberOfBottles === "" || numberOfDispensers === ""){
-      openToast("모든 항목은 필수로 선택해 주십시오.", "error");
+    if(selected_area ===""){
+      openNotificationToast("지역을 선택해 주십시오.", "error", $("#areas"));
+    }else if(numberOfDispensers === ""){
+      openNotificationToast("냉온수기 대수를 선택해 주십시오.", "error", $("#numberOfDispensers"));
+    }else if(numberOfBottles === ""){
+      openNotificationToast("약정 통수를 선택해 주십시오.", "error", $("#numberOfBottles"));
     }else{
       location.href="#consult_btn";
     }
   });
 
   $("#consult_btn").click(function(){
-    var selected_area = $("#areas option:selected").val();
-    var selected_area_nm = $("#areas option:selected").text();
-    var numberOfDispensers = $("#numberOfDispensers option:selected").val() + "대";
-    var numberOfBottles = $("#numberOfBottles option:selected").val() + "통";
-    var nameOfPersonInCharge = $("#nameOfPersonInCharge").val();
-    var nameOfCompany = $("#nameOfCompany").val();
-    var telNumber = $("#telNumber").val();
+    let selected_area = $("#areas option:selected").val();
+    let selected_area_nm = $("#areas option:selected").text();
+    let numberOfDispensers = $("#numberOfDispensers option:selected").val() + "대";
+    let numberOfBottles = $("#numberOfBottles option:selected").val() + "통";
+    let nameOfPersonInCharge = $("#nameOfPersonInCharge").val();
+    let nameOfCompany = $("#nameOfCompany").val();
+    let telNumber = $("#telNumber").val();
 
     /*if(selected_area === ""){
-      openToast("지역을 선택해 주십시오", "error");
-      $("#areas").focus();
+      openNotificationToast("지역을 선택해 주십시오", "error", $("#areas"));
     }else if(numberOfBottles === ""){
-      openToast("약정 통수를 선택해 주십시오", "error");
-      $("#numberOfBottles").focus();
+      openNotificationToast("약정 통수를 선택해 주십시오", "error", $("#numberOfBottles"));
     }else if(numberOfDispensers === "") {
-      openToast("냉온수기 대수를 선택해 주십시오", "error");
-      $("#numberOfDispensers").focus();
+      openNotificationToast("냉온수기 대수를 선택해 주십시오", "error", $("#numberOfDispensers"));
     }else */if(nameOfPersonInCharge === ""){
-      openToast("담당자명을 입력해 주십시오", "error");
-      $("#nameOfPersonInCharge").focus();
+      openNotificationToast("담당자명을 입력해 주십시오", "error", $("#nameOfPersonInCharge"));
     }else if(nameOfCompany === ""){
-      openToast("회사명을 입력해 주십시오", "error");
-      $("#nameOfCompany").focus();
+      openNotificationToast("회사명을 입력해 주십시오", "error", $("#nameOfCompany"));
     }else if(telNumber === ""){
-      openToast("연락처를 입력해 주십시오", "error");
-      $("#telNumber").focus();
+      openNotificationToast("연락처를 입력해 주십시오", "error", $("#telNumber"));
     }/*else if(isNaN(telNumber)){
-      openToast("연락처는 숫자만 입력 가능 합니다.", "error");
-      $("#telNumber").val("").focus();
+      openNotificationToast("연락처는 숫자만 입력 가능 합니다.", "error", $("#telNumber"));
+      $("#telNumber").val("");
     }*/else {
       if (confirm("위의 입력하신 정보로 상담 신청을 하시겠습니까?")) {
-        var text="== 신규 상담 신청 접수 ==";
+        let text="== 신규 상담 신청 접수 ==";
 
         if(selected_area === ""){
           selected_area_nm = "미입력";
@@ -243,7 +239,7 @@
 
   $("#telNumber").change(function() {
     if(isNaN(this.value)){
-      openToast("연락처는 숫자만 입력 가능 합니다.", "error");
+      openNotificationToast("연락처는 숫자만 입력 가능 합니다.", "error", $("#telNumber"));
       $("#telNumber").val("").focus();
     }else{
       this.value = phoneNumberFomatter(this.value);
@@ -251,7 +247,7 @@
   });
 
   function storeClient(text){
-    var payload = {
+    let payload = {
       chat_id: "@CryptomatoAlert",
       text: text
     }
@@ -263,17 +259,17 @@
         contentType : 'application/json',
         data : JSON.stringify(payload),
         success : function(res) {
-          openToast("고객님이 입력하신 소중한 정보를 담당자에게 전달 하였습니다. 빠른 시일내에 입력해주신 연락처로 연락 드리겠습니다. 감사합니다.", "success");
+          openNotificationToast("고객님이 입력하신 소중한 정보를 담당자에게 전달 하였습니다. 빠른 시일내에 입력해주신 연락처로 연락 드리겠습니다. 감사합니다.", "success");
         },
         error : function(xhr) {
-          openToast(xhr.responseText, "error");
+          openNotificationToast(xhr.responseText, "error");
         }
       });
   }
 
   function phoneNumberFomatter(num,type){
 
-    var formatNum = '';
+    let formatNum = '';
 
     if(num.length===11){
       if(type===0){
@@ -301,15 +297,31 @@
     return formatNum;
   }
 
-  function openToast(text, type){
+  function openNotificationToast(text, type, focusElem){
+    let timer = 3000;
+
+    if(type === "success"){
+      timer = 6000;
+    }
+
     const Toast = Swal.mixin({
       toast: true,
       showConfirmButton: false,
-      timer: 5000,
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: "확인",
+      cancelButtonText: "취소",
+      denyButtonText: "닫기",
+      position: "center",
+      timer: timer,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.onmouseenter = Swal.stopTimer;
         toast.onmouseleave = Swal.resumeTimer;
+        $(focusElem).focus();
+      },
+      didClose: (toast) => {
+        $(focusElem).focus();
       }
     });
     Toast.fire({

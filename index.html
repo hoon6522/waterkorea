@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no">
 <title>워터 코리아</title>
 <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/splide.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -138,6 +139,7 @@
 
 <script src="js/jquery-4.0.0.min.js"></script>
 <script src="js/sweetalert2@11.min.js"></script>
+<script src="js/splide.min.js"></script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHCRMFQ330"></script>
 <script>
@@ -176,6 +178,38 @@
         calcResultHtml += "<div class='calc-label'><span>1회 최초 설치비</span></div>";
         calcResultHtml += "<div class='calc-value'><strong><u>"+ (numberOfDispensers * initialInstallationFee).toLocaleString() + "원</u></strong></div>";
         calcResultHtml += "</div>";
+
+        calcResultHtml += '<div id="main-carousel" class="splide" aria-label="The main image carousel">';
+        calcResultHtml += '  <div class="splide__track">';
+        calcResultHtml += '    <ul class="splide__list">';
+        calcResultHtml += '      <li class="splide__slide">';
+        calcResultHtml += '        <img src="/images/office.png" alt="">';
+        calcResultHtml += '      </li>';
+        calcResultHtml += '      <li class="splide__slide">';
+        calcResultHtml += '        <img src="/images/waterguard.png" alt="">';
+        calcResultHtml += '      </li>';
+        calcResultHtml += '      <li class="splide__slide">';
+        calcResultHtml += '        <img src="/images/house.png" alt="">';
+        calcResultHtml += '      </li>';
+        calcResultHtml += '    </ul>';
+        calcResultHtml += '  </div>';
+        calcResultHtml += '</div>';
+
+        calcResultHtml += '<div id="thumbnail-carousel" class="splide" aria-label="The thumbnail carousel">';
+        calcResultHtml += '  <div class="splide__track">';
+        calcResultHtml += '    <ul class="splide__list">';
+        calcResultHtml += '      <li class="splide__slide">';
+        calcResultHtml += '        <img src="/images/office.png" alt="">';
+        calcResultHtml += '      </li>';
+        calcResultHtml += '      <li class="splide__slide">';
+        calcResultHtml += '        <img src="/images/waterguard.png" alt="">';
+        calcResultHtml += '      </li>';
+        calcResultHtml += '      <li class="splide__slide">';
+        calcResultHtml += '        <img src="/images/house.png" alt="">';
+        calcResultHtml += '      </li>';
+        calcResultHtml += '    </ul>';
+        calcResultHtml += '  </div>';
+        calcResultHtml += '</div>';
       }
     }
   });
@@ -354,8 +388,39 @@
       denyButtonText: "닫기",
       confirmButtonColor: "#2a5298",
       returnFocus: false,
-      didClose: (modal) => {
-        //$("#nameOfPersonInCharge").focus();
+      didOpen: (modal) => {
+        let main = new Splide( '#main-carousel', {
+          type      : 'fade',
+          rewind    : true,
+          pagination: false,
+          arrows    : false,
+        } );
+
+        let thumbnails = new Splide( '#thumbnail-carousel', {
+          fixedWidth : 100,
+          fixedHeight: 60,
+          arrows     : false,
+          gap        : 10,
+          type       : 'loop',
+          perPage    : 3,
+          rewind     : true,
+          pagination : false,
+          focus      : 'center',
+          isNavigation: true,
+          autoplay : true,
+          updateOnMove: true,
+          interval: 5000,
+          breakpoints: {
+            600: {
+              fixedWidth : 60,
+              fixedHeight: 44,
+            },
+          }
+        });
+
+        main.sync( thumbnails );
+        main.mount();
+        thumbnails.mount();
       }
     }).then((result) => {
       if (result.isConfirmed){

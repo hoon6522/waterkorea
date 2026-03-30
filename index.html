@@ -25,6 +25,8 @@
 <meta property="twitter:description" content="경기 지역 생수 배송 및 냉온수기 설치 전문.">
 <meta property="twitter:image" content="https://waterkorea.biz/images/waterguard.png">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/splide.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -38,9 +40,6 @@
     </div>
      <nav class="menu">
       <a href="tel:010-4167-6207">상담: 010-4167-6207</a>
-      <!--<a href="#">서비스 안내</a>
-      <a href="#">요금계산기</a>
-      <a href="#">조직 소개</a>-->
     </nav>
   </div>
 </header>
@@ -95,7 +94,7 @@
   <div class="container feature-grid" style="word-break: keep-all">
 
     <div class="feature">
-      <div class="icon"><img src="images/handshake.png" alt="악수 모양 아이콘" style="width:92%;"/></div>
+      <div class="icon"><img src="images/handshake.png" alt="신뢰와 협력의 상징 악수 아이콘" style="width:92%;" loading="lazy"/></div>
       <h4>냉온수기</h4>
       <h4>무상대여</h4>
       <p style="margin-top: 10px;">부담없는</p>
@@ -103,7 +102,7 @@
     </div>
 
     <div class="feature">
-      <div class="icon"><img src="images/delivery.png" alt="물통 모양 아이콘" style="width:84%;"/></div>
+      <div class="icon"><img src="images/delivery.png" alt="신속한 배송을 의미하는 물통 아이콘" style="width:84%;" loading="lazy"/></div>
       <h4>자동</h4>
       <h4>정기배송</h4>
       <p style="margin-top: 10px;">정기 배송</p>
@@ -111,7 +110,7 @@
     </div>
 
     <div class="feature">
-      <div class="icon"><img src="images/waterguard.png" alt="정기 소독 아이콘" style="width:87%;"/>️</div>
+      <div class="icon"><img src="images/waterguard.png" alt="철저한 위생 관리를 위한 정기 소독 아이콘" style="width:87%;" loading="lazy"/>️</div>
       <h4>정기/요청</h4>
       <h4>소독</h4>
       <p style="margin-top: 10px;">전문 소독</p>
@@ -119,7 +118,7 @@
     </div>
 
     <div class="feature">
-      <div class="icon"><img src="images/house.png" alt="집 모양 아이콘" style="width:100%;"/></div>
+      <div class="icon"><img src="images/house.png" alt="전국 어디서나 가까운 대리점을 의미하는 아이콘" style="width:100%;" loading="lazy"/></div>
       <h4>지역</h4>
       <h4>대리점 입점</h4>
       <p style="margin-top: 10px;">설치 지역</p>
@@ -139,9 +138,6 @@
       <input type="text" id="nameOfPersonInCharge" placeholder="담당자명" title="담당자명 입력" maxlength="50"/>
       <input type="text" id="nameOfCompany" placeholder="업체명" title="업체명 입력" maxlength="200"/>
       <input type="tel" id="telNumber" placeholder="연락처" title="연락처 입력" maxlength="30"/>
-      <!--<select>
-        <option>설치 지역</option>
-      </select>-->
     </div>
 
     <button class="consult-btn" id="consult_btn">초고속 상담신청 ▶</button>
@@ -156,7 +152,7 @@
   </div>
 </footer>-->
 
-<div class="chat-btn"><a href="tel:010-4167-6207" style="color:white;">전화 상담</a></div>
+<div class="chat-btn"><a href="tel:010-4167-6207" style="color:white;" aria-label="전화로 바로 상담하기">전화 상담</a></div>
 
 <script src="js/jquery-4.0.0.min.js"></script>
 <script src="js/sweetalert2@11.min.js"></script>
@@ -200,33 +196,33 @@
         calcResultHtml += "<div class='calc-value'><strong><u>"+ (numberOfDispensers * initialInstallationFee).toLocaleString() + "원</u></strong></div>";
         calcResultHtml += "</div>";
 
-        calcResultHtml += '<div id="main-carousel" class="splide" aria-label="The main image carousel">';
+        calcResultHtml += '<div id="main-carousel" class="splide" aria-label="메인 제품 이미지 슬라이드">';
         calcResultHtml += '  <div class="splide__track">';
         calcResultHtml += '    <ul class="splide__list">';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="/images/office.png" alt="">';
+        calcResultHtml += '        <img src="images/office.png" alt="사무실 내 생수 설치 사례">';
         calcResultHtml += '      </li>';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="/images/waterguard.png" alt="">';
+        calcResultHtml += '        <img src="images/waterguard.png" alt="정기 소독 및 위생 관리 서비스">';
         calcResultHtml += '      </li>';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="/images/house.png" alt="">';
+        calcResultHtml += '        <img src="images/house.png" alt="가정 및 소규모 공간 설치 예시">';
         calcResultHtml += '      </li>';
         calcResultHtml += '    </ul>';
         calcResultHtml += '  </div>';
         calcResultHtml += '</div>';
 
-        calcResultHtml += '<div id="thumbnail-carousel" class="splide" aria-label="The thumbnail carousel">';
+        calcResultHtml += '<div id="thumbnail-carousel" class="splide" aria-label="제품 이미지 미리보기 목록">';
         calcResultHtml += '  <div class="splide__track">';
         calcResultHtml += '    <ul class="splide__list">';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="/images/office.png" alt="">';
+        calcResultHtml += '        <img src="images/office.png" alt="사무실 설치 미리보기">';
         calcResultHtml += '      </li>';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="/images/waterguard.png" alt="">';
+        calcResultHtml += '        <img src="images/waterguard.png" alt="위생 관리 미리보기">';
         calcResultHtml += '      </li>';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="/images/house.png" alt="">';
+        calcResultHtml += '        <img src="images/house.png" alt="가정 설치 미리보기">';
         calcResultHtml += '      </li>';
         calcResultHtml += '    </ul>';
         calcResultHtml += '  </div>';

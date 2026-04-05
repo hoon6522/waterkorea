@@ -122,10 +122,22 @@ a {
   font-size: 18px;
 }
 
+.calc-popup {
+  border-radius: 30px;
+  background: rgb(255 255 255 / 0.91)
+}
+
+.calc-area {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 15px;
+  padding: 10px 0 10px 0;
+  background: white;
+}
+
 .calc-result {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.1em 1em;
+  gap: 0.1em 0.5em;
   margin: 0 auto;
   text-align: right;
   font-size: clamp(24px, 1.6vw, 40px);
@@ -143,6 +155,9 @@ a {
 
 .calc-comment{
   margin-top:10px;
+  margin-bottom:10px;
+  font-weight: bold;
+  color: red;
   font-size: clamp(24px, 1.6vw, 40px);
 }
 
@@ -150,14 +165,21 @@ a {
   content: ':'
 }
 
-.splide {
-  margin-top:15px;
+.splide-area {
+  margin-top:20px;
+}
+
+#main-carousel {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 .splide__slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 15px;
 }
 
 .splide__slide {

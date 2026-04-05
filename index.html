@@ -208,45 +208,49 @@
         numberOfBottlesElem.children().remove();
         numberOfBottlesElem.html("<option value=''>약정 통수</option><option value='"+numberOfBottles+"'>약정 "+numberOfBottles+"통</option>");
         numberOfBottlesElem.val(numberOfBottles).change();
-        calcResultHtml = "<div class='calc-result'>";
-        calcResultHtml += "<div class='calc-label'><span>월 예상 요금</span></div>";
-        calcResultHtml += "<div class='calc-value'><strong><u>"+ (numberOfBottles * pricePerBottle).toLocaleString() + "원</u></strong></div>";
-        calcResultHtml += "<div class='calc-label'><span>첫달 설치비</span></div>";
-        calcResultHtml += "<div class='calc-value'><strong><u>"+ (numberOfDispensers * initialInstallationFee).toLocaleString() + "원</u></strong></div>";
+        calcResultHtml = "<div class='calc-area'>";
+        calcResultHtml += "  <div class='calc-result'>";
+        calcResultHtml += "   <div class='calc-label'><span>월 예상 요금</span></div>";
+        calcResultHtml += "   <div class='calc-value'><strong><u>"+ (numberOfBottles * pricePerBottle).toLocaleString() + "원</u></strong></div>";
+        calcResultHtml += "   <div class='calc-label'><span>첫 달 설치비</span></div>";
+        calcResultHtml += "   <div class='calc-value'><strong><u>"+ (numberOfDispensers * initialInstallationFee).toLocaleString() + "원</u></strong></div>";
+        calcResultHtml += " </div>";
+        calcResultHtml += " <div class='calc-comment''>- 설치비 40% 할인중 -</div>";
         calcResultHtml += "</div>";
-        calcResultHtml += "<div class='calc-comment' style='font-weight: bold; color: red;'>- 설치비 40% 할인중 -</div>";
 
-        calcResultHtml += '<div id="main-carousel" class="splide" aria-label="메인 제품 이미지 슬라이드">';
-        calcResultHtml += '  <div class="splide__track">';
-        calcResultHtml += '    <ul class="splide__list">';
-        calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/popup1.png" alt="사무실 내 생수 설치 사례">';
-        calcResultHtml += '      </li>';
-        calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/popup2.png" alt="정기 소독 및 위생 관리 서비스">';
-        calcResultHtml += '      </li>';
-        calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/popup3.png" alt="가정 및 소규모 공간 설치 예시">';
-        calcResultHtml += '      </li>';
-        calcResultHtml += '    </ul>';
-        calcResultHtml += '  </div>';
-        calcResultHtml += '</div>';
+        calcResultHtml += "<div class='splide-area'>";
+        calcResultHtml += ' <div id="main-carousel" class="splide" aria-label="메인 제품 이미지 슬라이드">';
+        calcResultHtml += '   <div class="splide__track">';
+        calcResultHtml += '     <ul class="splide__list">';
+        calcResultHtml += '       <li class="splide__slide">';
+        calcResultHtml += '         <img src="images/popup1.png" alt="사무실 내 생수 설치 사례">';
+        calcResultHtml += '       </li>';
+        calcResultHtml += '       <li class="splide__slide">';
+        calcResultHtml += '         <img src="images/popup2.png" alt="정기 소독 및 위생 관리 서비스">';
+        calcResultHtml += '       </li>';
+        calcResultHtml += '       <li class="splide__slide">';
+        calcResultHtml += '         <img src="images/popup3.png" alt="가정 및 소규모 공간 설치 예시">';
+        calcResultHtml += '       </li>';
+        calcResultHtml += '     </ul>';
+        calcResultHtml += '   </div>';
+        calcResultHtml += ' </div>';
 
-        calcResultHtml += '<div id="thumbnail-carousel" class="splide" aria-label="제품 이미지 미리보기 목록">';
-        calcResultHtml += '  <div class="splide__track">';
-        calcResultHtml += '    <ul class="splide__list">';
-        calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/popup1.png" alt="사무실 설치 미리보기">';
-        calcResultHtml += '      </li>';
-        calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/popup2.png" alt="위생 관리 미리보기">';
-        calcResultHtml += '      </li>';
-        calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/popup3.png" alt="가정 설치 미리보기">';
-        calcResultHtml += '      </li>';
-        calcResultHtml += '    </ul>';
-        calcResultHtml += '  </div>';
-        calcResultHtml += '</div>';
+        calcResultHtml += ' <div id="thumbnail-carousel" class="splide" aria-label="제품 이미지 미리보기 목록">';
+        calcResultHtml += '   <div class="splide__track">';
+        calcResultHtml += '     <ul class="splide__list">';
+        calcResultHtml += '       <li class="splide__slide">';
+        calcResultHtml += '         <img src="images/popup1.png" alt="사무실 설치 미리보기">';
+        calcResultHtml += '       </li>';
+        calcResultHtml += '       <li class="splide__slide">';
+        calcResultHtml += '         <img src="images/popup2.png" alt="위생 관리 미리보기">';
+        calcResultHtml += '       </li>';
+        calcResultHtml += '       <li class="splide__slide">';
+        calcResultHtml += '         <img src="images/popup3.png" alt="가정 설치 미리보기">';
+        calcResultHtml += '       </li>';
+        calcResultHtml += '     </ul>';
+        calcResultHtml += '   </div>';
+        calcResultHtml += ' </div>';
+        calcResultHtml += "</div>";
       }
     }
   });
@@ -415,7 +419,7 @@
 
   function openModal(html){
     const Modal = Swal.fire({
-      title: "<strong>계산결과</strong>",
+      title: "<strong>계산 결과</strong>",
       html: html,
       showConfirmButton: true,
       showDenyButton: false,
@@ -425,12 +429,16 @@
       denyButtonText: "닫기",
       confirmButtonColor: "#2a5298",
       returnFocus: false,
+      customClass: {
+        popup: 'calc-popup',
+      },
       didOpen: (modal) => {
         let main = new Splide( '#main-carousel', {
           type      : 'fade',
           rewind    : true,
           pagination: false,
           arrows    : false,
+          fixedWidth : '100%'
         } );
 
         let thumbnails = new Splide( '#thumbnail-carousel', {

@@ -28,12 +28,12 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="css/style.css" as="style">
-<link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/splide.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" href="css/style.css" as="style"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/fonts.css"/>
+<link rel="stylesheet" href="css/splide.min.css"/>
 
 <script type="application/ld+json">
 {
@@ -185,7 +185,7 @@
   gtag('config', 'G-ZHCRMFQ330');
 </script>
 <script>
-  let pricePerBottle = 6000;
+  const pricePerBottle = 6000;
   let calcResultHtml = "";
 
   $("#numberOfDispensers, #areas").change(function() {
@@ -196,6 +196,7 @@
       if(numberOfDispensers === "") {
         $("#numberOfDispensers").focus();
       }else{
+
         let numberOfBottlesElem = $("#numberOfBottles");
         let numberOfBottles = numberOfDispensers * 3;
         let initialInstallationFee = 22000;
@@ -208,6 +209,7 @@
         numberOfBottlesElem.children().remove();
         numberOfBottlesElem.html("<option value=''>약정 통수</option><option value='"+numberOfBottles+"'>약정 "+numberOfBottles+"통</option>");
         numberOfBottlesElem.val(numberOfBottles).change();
+
         calcResultHtml = "<div class='calc-area'>";
         calcResultHtml += "  <div class='calc-result'>";
         calcResultHtml += "   <div class='calc-label'><span>월 예상 요금</span></div>";
@@ -251,6 +253,8 @@
         calcResultHtml += '   </div>';
         calcResultHtml += ' </div>';
         calcResultHtml += "</div>";
+
+
       }
     }
   });
@@ -452,7 +456,7 @@
           pagination : false,
           focus      : 'center',
           isNavigation: true,
-          autoplay : true,
+          autoplay : false,
           updateOnMove: true,
           interval: 5000,
           breakpoints: {

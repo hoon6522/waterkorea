@@ -65,11 +65,11 @@
 <section class="hero">
   <div class="overlay">
     <div class="container hero-content" style="text-align: center;">
-      <h1>비즈니스 생수 플랫폼</h1>
+      <h1>우리동네 생수 플랫폼</h1>
       <h1>
         <span>생수 배송 서비스</span>
       </h1>
-      <p>냉온수기 설치, 경기 지역 배송 전문</p>
+      <p>냉온수기 설치, 당일 빠른 설치 전문</p>
 
       <div class="calculator">
         <h3 style="color: #2a5298; font-size: 25px;">월 요금 간편계산기 ▶</h3>
@@ -198,11 +198,12 @@
       }else{
         let numberOfBottlesElem = $("#numberOfBottles");
         let numberOfBottles = numberOfDispensers * 3;
-        let initialInstallationFee = 32000;
+        let initialInstallationFee = 22000;
+        let originalInstallationFee = 38000;
 
-        if(numberOfDispensers > 1){
+        /*if(numberOfDispensers > 1){
           initialInstallationFee = 22000;
-        }
+        }*/
 
         numberOfBottlesElem.children().remove();
         numberOfBottlesElem.html("<option value=''>약정 통수</option><option value='"+numberOfBottles+"'>약정 "+numberOfBottles+"통</option>");
@@ -210,21 +211,22 @@
         calcResultHtml = "<div class='calc-result'>";
         calcResultHtml += "<div class='calc-label'><span>월 예상 요금</span></div>";
         calcResultHtml += "<div class='calc-value'><strong><u>"+ (numberOfBottles * pricePerBottle).toLocaleString() + "원</u></strong></div>";
-        calcResultHtml += "<div class='calc-label'><span>최초 설치비</span></div>";
+        calcResultHtml += "<div class='calc-label'><span>첫달 설치비</span></div>";
         calcResultHtml += "<div class='calc-value'><strong><u>"+ (numberOfDispensers * initialInstallationFee).toLocaleString() + "원</u></strong></div>";
         calcResultHtml += "</div>";
+        calcResultHtml += "<div class='calc-comment' style='font-weight: bold; color: red;'>- 설치비 40% 할인중 -</div>";
 
         calcResultHtml += '<div id="main-carousel" class="splide" aria-label="메인 제품 이미지 슬라이드">';
         calcResultHtml += '  <div class="splide__track">';
         calcResultHtml += '    <ul class="splide__list">';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/office.png" alt="사무실 내 생수 설치 사례">';
+        calcResultHtml += '        <img src="images/popup1.png" alt="사무실 내 생수 설치 사례">';
         calcResultHtml += '      </li>';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/waterguard.png" alt="정기 소독 및 위생 관리 서비스">';
+        calcResultHtml += '        <img src="images/popup2.png" alt="정기 소독 및 위생 관리 서비스">';
         calcResultHtml += '      </li>';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/house.png" alt="가정 및 소규모 공간 설치 예시">';
+        calcResultHtml += '        <img src="images/popup3.png" alt="가정 및 소규모 공간 설치 예시">';
         calcResultHtml += '      </li>';
         calcResultHtml += '    </ul>';
         calcResultHtml += '  </div>';
@@ -234,13 +236,13 @@
         calcResultHtml += '  <div class="splide__track">';
         calcResultHtml += '    <ul class="splide__list">';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/office.png" alt="사무실 설치 미리보기">';
+        calcResultHtml += '        <img src="images/popup1.png" alt="사무실 설치 미리보기">';
         calcResultHtml += '      </li>';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/waterguard.png" alt="위생 관리 미리보기">';
+        calcResultHtml += '        <img src="images/popup2.png" alt="위생 관리 미리보기">';
         calcResultHtml += '      </li>';
         calcResultHtml += '      <li class="splide__slide">';
-        calcResultHtml += '        <img src="images/house.png" alt="가정 설치 미리보기">';
+        calcResultHtml += '        <img src="images/popup3.png" alt="가정 설치 미리보기">';
         calcResultHtml += '      </li>';
         calcResultHtml += '    </ul>';
         calcResultHtml += '  </div>';

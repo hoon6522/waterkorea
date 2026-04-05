@@ -68,12 +68,13 @@ a {
 }
 
 .hero h1 span {
-  color: #ffd24d;
+  color: #ffc311;
 }
 
 .hero p {
   margin-top: 15px;
   font-size: 20px;
+  font-weight: bold;
 }
 
 /* Calculator */
@@ -124,14 +125,25 @@ a {
 .calc-result {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.5em 1em;
+  gap: 0.1em 1em;
   margin: 0 auto;
   text-align: right;
-  font-size: clamp(17px, 1.4vw, 21px);
+  font-size: clamp(24px, 1.6vw, 40px);
+}
+
+.calc-label{
+  font-size: clamp(24px, 1.6vw, 40px);
 }
 
 .calc-value{
+  font-size: clamp(24px, 1.6vw, 40px);
   text-align: left;
+  color: goldenrod;
+}
+
+.calc-comment{
+  margin-top:10px;
+  font-size: clamp(24px, 1.6vw, 40px);
 }
 
 .calc-result span:after{

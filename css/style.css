@@ -131,7 +131,7 @@ a {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   border-radius: 15px;
   padding: 20px 0 20px 0;
-  background: white;
+  background: rgb(231 231 231 / 14%);
 }
 
 .calc-result {

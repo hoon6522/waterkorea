@@ -37,6 +37,11 @@ a {
   align-items: center;
 }
 
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
 .menu a {
   margin-left: 30px;
   color: white;

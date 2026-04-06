@@ -181,16 +181,16 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-ZHCRMFQ330');
 </script>
 <script>
   const pricePerBottle = 6000;
   let calcResultHtml = "";
+  let numberOfDispensers = "";
 
   $("#numberOfDispensers, #areas").change(function() {
     let selected_area = $("#areas option:selected").val();
-    let numberOfDispensers = $("#numberOfDispensers option:selected").val();
+    numberOfDispensers = $("#numberOfDispensers option:selected").val();
 
     if(selected_area !== ""){
       if(numberOfDispensers === "") {
@@ -210,17 +210,7 @@
         numberOfBottlesElem.html("<option value=''>약정 통수</option><option value='"+numberOfBottles+"'>약정 "+numberOfBottles+"통</option>");
         numberOfBottlesElem.val(numberOfBottles).change();
 
-        calcResultHtml = "<div class='calc-area'>";
-        calcResultHtml += "  <div class='calc-result'>";
-        calcResultHtml += "   <div class='calc-label'><span>월 예상 요금</span></div>";
-        calcResultHtml += "   <div class='calc-value'><strong><u>"+ (numberOfBottles * pricePerBottle).toLocaleString() + "원</u></strong></div>";
-        calcResultHtml += "   <div class='calc-label'><span>첫 달 설치비</span></div>";
-        calcResultHtml += "   <div class='calc-value'><strong><u>"+ (numberOfDispensers * initialInstallationFee).toLocaleString() + "원</u></strong></div>";
-        calcResultHtml += " </div>";
-        calcResultHtml += " <div class='calc-comment''>- 설치비 40% 할인중 -</div>";
-        calcResultHtml += "</div>";
-
-        calcResultHtml += "<div class='splide-area'>";
+        calcResultHtml = "<div class='splide-area'>";
         calcResultHtml += ' <div id="main-carousel" class="splide" aria-label="메인 제품 이미지 슬라이드">';
         calcResultHtml += '   <div class="splide__track">';
         calcResultHtml += '     <ul class="splide__list">';
@@ -237,7 +227,7 @@
         calcResultHtml += '   </div>';
         calcResultHtml += ' </div>';
 
-        calcResultHtml += ' <div id="thumbnail-carousel" class="splide" aria-label="제품 이미지 미리보기 목록">';
+        calcResultHtml += ' <div id="thumbnail-carousel" class="splide" aria-label="제품 이미지 미리보기 목록" style="display: none;">';
         calcResultHtml += '   <div class="splide__track">';
         calcResultHtml += '     <ul class="splide__list">';
         calcResultHtml += '       <li class="splide__slide">';
@@ -254,7 +244,15 @@
         calcResultHtml += ' </div>';
         calcResultHtml += "</div>";
 
-
+        calcResultHtml += "<div class='calc-area'>";
+        calcResultHtml += "  <div class='calc-result'>";
+        calcResultHtml += "   <div class='calc-label'><span>월 예상 요금</span></div>";
+        calcResultHtml += "   <div class='calc-value'><strong><u>"+ (numberOfBottles * pricePerBottle).toLocaleString() + "원</u></strong></div>";
+        calcResultHtml += "   <div class='calc-label'><span>첫 달 설치비</span></div>";
+        calcResultHtml += "   <div class='calc-value'><strong><u>"+ (numberOfDispensers * initialInstallationFee).toLocaleString() + "원</u></strong></div>";
+        calcResultHtml += " </div>";
+        calcResultHtml += " <div class='calc-comment''>- 설치비 40% 할인중 -</div>";
+        calcResultHtml += "</div>";
       }
     }
   });
@@ -442,7 +440,8 @@
           rewind    : true,
           pagination: false,
           arrows    : false,
-          fixedWidth : '100%'
+          fixedWidth : '100%',
+          drag: false
         } );
 
         let thumbnails = new Splide( '#thumbnail-carousel', {
@@ -470,6 +469,12 @@
         main.sync( thumbnails );
         main.mount();
         thumbnails.mount();
+
+        if(numberOfDispensers < 3){
+          thumbnails.go(parseInt(numberOfDispensers) - 1);
+        }else{
+          thumbnails.go(2);
+        }
       }
     }).then((result) => {
       if (result.isConfirmed){

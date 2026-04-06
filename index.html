@@ -441,7 +441,8 @@
           pagination: false,
           arrows    : false,
           fixedWidth : '100%',
-          drag: false
+          drag: false,
+          preloadPages: 3
         } );
 
         let thumbnails = new Splide( '#thumbnail-carousel', {
@@ -457,6 +458,7 @@
           isNavigation: true,
           autoplay : false,
           updateOnMove: true,
+          preloadPages: 3,
           interval: 5000,
           breakpoints: {
             600: {

@@ -40,10 +40,11 @@ a {
 .logo {
   font-size: 25px;
   font-weight: bold;
-  width: 50%;
+  width: 40%;
 }
 
 .logo a img {
+  min-width: 110px;
   width: 50%;
 }
 
@@ -57,15 +58,16 @@ a {
 /* Hero */
 .hero {
   background: url('/images/office.png') left/cover;
-  height: 550px;
+  height: 650px;
   position: relative;
+  padding: 110px 0 240px 0;
 }
 
 .overlay {
   height: 100%;
   display: flex;
   align-items: center;
-  margin-top: 72px;
+  /*margin-top: 72px;*/
 }
 
 .hero-content {
@@ -90,7 +92,7 @@ a {
 /* Calculator */
 .calculator {
   background: white;
-  margin-top: 40px;
+  margin-top: 50px;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
@@ -324,7 +326,7 @@ a {
 
   .hero {
     height: auto;
-    padding: 70px 0 240px 0;
+    padding: 125px 0 240px 0;
   }
 
   .features {
@@ -346,10 +348,6 @@ a {
 }
 
 @media (min-width: 601px) {
-  .overlay .hero-content:first-child {
-    margin-top: 100px;
-  }
-
   .calculator {
     margin-top: 70px;
   }

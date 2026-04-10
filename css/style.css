@@ -23,7 +23,7 @@ a {
 /* Header */
 .header {
   background: linear-gradient(to right, #1e3c72, #2a5298);
-  padding: 5px 0;
+  padding: 5px 0 5px 0;
   color: white;
   position:fixed;
   width:100%;
